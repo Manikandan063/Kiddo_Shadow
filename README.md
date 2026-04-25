@@ -1,16 +1,17 @@
-# React + Vite
+# Kiddo Shadow - The Intelligent Learning Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Kiddo Shadow unifies curriculum-aligned AI, operational intelligence, and secure communication for modern schools.
 
-Currently, two official plugins are available:
+## Features
+- Syllabus-Trained AI Learning Assistant
+- Digital Student Diary & Notes
+- Teacher-Moderated Class Group Chat
+- AI Class Catch-Up Learning
+- Strategic Institutional Implementation
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tech Stack
+- React + Vite
+- Tailwind CSS
+- Framer Motion
+- Lucide Icons
+- Shadcn UI
