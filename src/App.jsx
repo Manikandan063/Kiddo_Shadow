@@ -7,6 +7,7 @@ import Modules from "./Modules/Modules/Modules";
 import CatchUp from "./Modules/CatchUp/CatchUp";
 import Safety from "./Modules/Safety/Safety";
 import HowItWorks from "./Modules/HowItWorks/HowItWorks";
+import WhyChoose from "./Modules/WhyChoose/WhyChoose";
 import Contact from "./Modules/Contact/Contact";
 import Footer from "./Modules/Footer/Footer";
 import DemoModal from "./Modules/DemoModal/DemoModal";
@@ -36,21 +37,19 @@ function App() {
         {/* Dynamic Ambient Glows */}
         <motion.div 
           animate={{ 
-            scale: [1, 1.2, 1],
-            opacity: [0.15, 0.25, 0.15]
+            opacity: [0.1, 0.2, 0.1]
           }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-[10%] -left-[10%] w-[800px] h-[800px] bg-primary/20 blur-[140px] rounded-full"
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -top-[10%] -left-[10%] w-[800px] h-[800px] bg-primary/10 blur-[140px] rounded-full will-change-opacity"
         />
         <motion.div 
           animate={{ 
-            scale: [1.2, 1, 1.2],
-            opacity: [0.1, 0.2, 0.1]
+            opacity: [0.05, 0.15, 0.05]
           }}
-          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[30%] -right-[15%] w-[900px] h-[900px] bg-secondary/10 blur-[160px] rounded-full"
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-[30%] -right-[15%] w-[900px] h-[900px] bg-secondary/5 blur-[160px] rounded-full will-change-opacity"
         />
-        <div className="absolute bottom-[-20%] left-[20%] w-[1000px] h-[600px] bg-primary/10 blur-[180px] rounded-[100%] rotate-45" />
+        <div className="absolute bottom-[-20%] left-[20%] w-[1000px] h-[600px] bg-primary/5 blur-[180px] rounded-[100%] rotate-45" />
       </div>
 
       {/* Scroll Progress Bar */}
@@ -68,6 +67,7 @@ function App() {
         <Modules />
         <CatchUp />
         <Safety />
+        <WhyChoose />
         <HowItWorks />
         <Contact onOpenDemo={handleOpenDemo} />
       </main>

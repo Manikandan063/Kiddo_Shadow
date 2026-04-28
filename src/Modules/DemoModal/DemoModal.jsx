@@ -12,6 +12,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Sparkles, Building2, User, Phone, Mail, MapPin, Users2, ArrowRight, X, ShieldCheck, Zap, Globe } from "lucide-react";
 
+import navLogo from "@/assets/Navbar_Logo.png";
+
 const DemoModal = ({ isOpen, setIsOpen }) => {
   const [formData, setFormData] = useState({
     schoolName: "",
@@ -49,8 +51,12 @@ const DemoModal = ({ isOpen, setIsOpen }) => {
             </div>
 
             <div className="relative z-10">
-              <div className="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center mb-8 border border-white/30 shadow-lg">
-                <Sparkles size={24} className="fill-white" />
+              <div className="h-28 flex items-center mb-8">
+                <img 
+                  src={navLogo} 
+                  alt="Kiddo Shadow Logo" 
+                  className="h-full w-auto object-contain" 
+                />
               </div>
               <h3 className="text-2xl font-bold mb-6 leading-tight">Start Your Institution's AI Journey</h3>
               <div className="space-y-6">

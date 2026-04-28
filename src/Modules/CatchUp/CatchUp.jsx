@@ -1,7 +1,28 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { Sparkles, FileUp, Zap, User } from "lucide-react";
 import robotImage from "@/assets/ai-tutor.jpg";
+
+const robotVariants = {
+  initial: { opacity: 0, y: 40, scale: 0.9 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    scale: 1,
+    transition: { 
+      duration: 1, 
+      ease: [0.22, 1, 0.36, 1] 
+    }
+  },
+  floating: {
+    y: [0, -15, 0],
+    rotateZ: [0, 0.5, 0],
+    transition: {
+      duration: 6,
+      repeat: Infinity,
+      ease: "easeInOut"
+    }
+  }
+};
 
 const CatchUp = () => {
   return (
@@ -83,19 +104,38 @@ const CatchUp = () => {
               
               {/* Main Robot Teacher Image - No Zoom */}
               <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+                variants={robotVariants}
+                initial="initial"
+                whileInView={["visible", "floating"]}
                 viewport={{ once: true }}
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="relative z-10 w-full h-full rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl"
+                whileHover={{ 
+                  scale: 1.02, 
+                  rotateY: 5, 
+                  rotateX: -5,
+                }}
+                transition={{ 
+                  scale: { duration: 0.4 },
+                  rotateY: { duration: 0.4 },
+                  rotateX: { duration: 0.4 }
+                }}
+                className="relative z-10 w-full h-full rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl perspective-1000 group"
               >
-                <img 
-                  src={robotImage} 
-                  alt="AI Teacher Robot" 
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-30" />
+                <div className="w-full h-full relative">
+                  <img 
+                    src={robotImage} 
+                    alt="AI Teacher Robot" 
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#050505]/60 via-transparent to-transparent opacity-60" />
+                </div>
+
+                {/* Decorative Glass Edge */}
+                <div className="absolute inset-0 border-[0.5px] border-white/20 rounded-[3rem] pointer-events-none z-20" />
+                
+                {/* Subtle Ambient Glow */}
+                <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-primary/20 blur-[60px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </motion.div>
             </div>
           </div>
