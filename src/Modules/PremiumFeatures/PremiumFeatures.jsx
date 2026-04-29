@@ -4,106 +4,108 @@ import {
   Sparkles, 
   BarChart3, 
   Lock,
-  Zap
+  ArrowRight,
+  Cpu,
+  ShieldCheck
 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const PremiumFeatures = () => {
+
   const features = [
     {
-      title: "AI Tutoring",
-      description: "Smart personalized learning paths",
-      icon: <Sparkles size={20} />,
-      color: "from-pink-500 to-rose-500",
-      lineColor: "bg-pink-500"
+      title: "AI Personalization",
+      description: "Individual learning paths for every student",
+      icon: <Cpu size={24} />,
+      color: "text-primary"
     },
     {
-      title: "Realtime Analytics",
-      description: "Instant school and student insight",
-      icon: <BarChart3 size={20} />,
-      color: "from-cyan-500 to-blue-500",
-      lineColor: "bg-cyan-500"
+      title: "Real-time Intelligence",
+      description: "Instant institutional and student insight",
+      icon: <BarChart3 size={24} />,
+      color: "text-secondary"
     },
     {
-      title: "Secure Access",
-      description: "Data privacy & encrypted student records",
-      icon: <Lock size={20} />,
-      color: "from-violet-500 to-purple-500",
-      lineColor: "bg-violet-500"
+      title: "Secure Data Core",
+      description: "Encrypted institutional records & privacy",
+      icon: <ShieldCheck size={24} />,
+      color: "text-primary"
     }
   ];
 
   return (
-    <section className="py-24 relative overflow-hidden bg-[#050505]">
+    <section id="premium" className="py-32 relative overflow-hidden bg-background">
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
+        
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-24">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-black uppercase tracking-[0.3em] mb-8 shadow-2xl"
+          >
+            Advanced Capabilities
+          </motion.div>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="text-3xl md:text-5xl font-black text-white mb-4 tracking-tight leading-[1.1]"
+            viewport={{ once: true }}
+            className="text-5xl md:text-8xl font-black text-foreground mb-8 tracking-tighter leading-[0.9]"
           >
-            Premium Features
+            Premium <span className="text-gradient-neon filter saturate-[1.2]">Features</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-white/40 text-sm md:text-base max-w-2xl mx-auto font-medium"
+            className="text-foreground/40 text-xl md:text-2xl max-w-3xl mx-auto font-medium leading-relaxed"
           >
-            All advanced functionality for modern schools
+            Precision engineering for the most demanding institutional workflows.
           </motion.p>
         </div>
 
         {/* Feature Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {features.map((feature, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ delay: index * 0.1, duration: 0.8 }}
-              className="group relative"
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="glass-card rounded-[3rem] p-12 border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-500 group relative overflow-hidden"
             >
-              <div className="h-full bg-white/[0.03] backdrop-blur-3xl border border-white/10 rounded-[2rem] p-8 hover:bg-white/[0.05] hover:border-white/20 transition-all duration-500 flex flex-col items-start text-left shadow-2xl">
-                
-                {/* Icon with vibrant gradient background */}
-                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${feature.color} flex items-center justify-center text-white mb-8 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)] group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
-                  {React.cloneElement(feature.icon, { size: 24, strokeWidth: 2.5 })}
-                </div>
+              {/* Subtle background glow on hover */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 blur-[60px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+              
+              <div className={`w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center mb-10 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 border border-white/10 shadow-2xl ${feature.color}`}>
+                {feature.icon}
+              </div>
 
-                <h3 className="text-xl font-bold text-white mb-3 tracking-tight group-hover:text-primary transition-colors">
-                  {feature.title}
-                </h3>
-                
-                <p className="text-white/50 text-sm leading-relaxed font-medium mb-8">
-                  {feature.description}
-                </p>
+              <h3 className="text-2xl font-black text-foreground mb-4 tracking-tight group-hover:text-primary transition-colors leading-tight">
+                {feature.title}
+              </h3>
+              
+              <p className="text-foreground/40 text-base leading-relaxed font-medium">
+                {feature.description}
+              </p>
 
-                {/* Visible Accent Line (Matches Image) */}
-                <div className="w-full bg-white/5 h-[2px] rounded-full overflow-hidden">
-                   <motion.div 
-                     initial={{ width: "30%" }}
-                     whileInView={{ width: "100%" }}
-                     transition={{ duration: 1.5, delay: 0.5 + (index * 0.2) }}
-                     className={`h-full ${feature.lineColor} shadow-[0_0_15px_currentColor]`}
-                   />
-                </div>
-
-                {/* Subtle Hover Glow Pod */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-[0.05] rounded-[2rem] transition-opacity duration-700`} />
+              {/* Decorative accent line */}
+              <div className="mt-10 flex items-center gap-4">
+                <div className="h-[2px] w-12 bg-gradient-to-r from-primary to-transparent group-hover:w-20 transition-all duration-700" />
+                <div className="w-1 h-1 rounded-full bg-primary/40 group-hover:bg-primary transition-colors" />
               </div>
             </motion.div>
           ))}
         </div>
       </div>
-
-      {/* Extreme Low-End Glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[300px] bg-primary/10 blur-[150px] rounded-full pointer-events-none opacity-20" />
+      {/* Decorative Glow */}
+      <div className="absolute top-1/2 right-0 w-[400px] h-[400px] bg-secondary/5 blur-[120px] rounded-full pointer-events-none opacity-50" />
     </section>
   );
 };
 
 export default PremiumFeatures;
+

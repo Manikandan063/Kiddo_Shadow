@@ -2,134 +2,154 @@ import React from "react";
 import { motion } from "framer-motion";
 import { 
   ShieldCheck, 
-  Lock, 
   Eye, 
   MessageSquareOff, 
   FileText, 
-  Hexagon,
+  Shield,
   CheckCircle2,
-  Shield
+  Lock,
+  Activity
 } from "lucide-react";
 
 const Safety = () => {
-  const features = [
+  const safetyCards = [
     {
-      title: "Platform-native communication only",
-      icon: <MessageSquareOff />,
+      title: "Platform-Native Communication",
+      desc: "All interactions occur within a secure, institutional environment. No external social links.",
+      icon: <Lock size={24} />,
+      color: "text-primary",
+      bg: "bg-primary/5"
     },
     {
-      title: "No private student messaging",
-      icon: <MessageSquareOff />,
+      title: "Moderated Engagement",
+      desc: "Educators have full visibility and control over all AI-student interactions in real-time.",
+      icon: <Eye size={24} />,
+      color: "text-secondary",
+      bg: "bg-secondary/5"
     },
     {
-      title: "Full educator moderation & visibility",
-      icon: <Eye />,
+      title: "Curriculum Alignment",
+      desc: "AI responses are strictly bounded by school-approved curriculum and academic standards.",
+      icon: <FileText size={24} />,
+      color: "text-primary",
+      bg: "bg-primary/5"
     },
     {
-      title: "Curriculum boundaries enforced",
-      icon: <FileText />,
+      title: "No Peer-to-Peer Chat",
+      desc: "Platform eliminates unmoderated student-to-student messaging to prevent distractions.",
+      icon: <MessageSquareOff size={24} />,
+      color: "text-secondary",
+      bg: "bg-secondary/5"
     },
     {
-      title: "Comprehensive activity audit trails",
-      icon: <ShieldCheck />,
+      title: "Activity Audit Trails",
+      desc: "Comprehensive logging of all platform usage for complete institutional accountability.",
+      icon: <Activity size={24} />,
+      color: "text-primary",
+      bg: "bg-primary/5"
     },
     {
-      title: "Student-first AI architecture",
-      icon: <Hexagon />,
-    },
+      title: "Institutional Privacy",
+      desc: "Data is handled with enterprise-grade encryption. We prioritize student data sovereignty.",
+      icon: <ShieldCheck size={24} />,
+      color: "text-secondary",
+      bg: "bg-secondary/5"
+    }
   ];
 
   return (
-    <section id="safety" className="py-24 bg-background relative overflow-hidden">
-      {/* Dynamic Background Elements */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none overflow-hidden">
-        <motion.div 
-          animate={{ rotate: 360 }}
-          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(circle_at_center,var(--primary)_0%,transparent_70%)] opacity-[0.03]"
-        />
-      </div>
-
+    <section id="safety" className="py-32 relative overflow-hidden bg-background">
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
-        <div className="flex flex-col items-center text-center mb-16">
+        {/* Header Section */}
+        <div className="flex flex-col items-center text-center mb-32">
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-black mb-6 uppercase tracking-[0.3em]"
+            className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-black mb-10 uppercase tracking-[0.4em] backdrop-blur-3xl shadow-2xl"
           >
             <Shield size={14} className="fill-primary" />
-            Zero-Risk Architecture
+            Institutional Security Protocol
           </motion.div>
-          <h2 className="text-3xl md:text-5xl font-black text-foreground mb-6 tracking-tighter leading-[1.1] max-w-4xl">
-            Enterprise-Grade Safety, <br className="hidden md:block" /> Fully Aligned with School Standards
-          </h2>
-          <p className="text-foreground/50 max-w-3xl mx-auto text-base md:text-xl leading-relaxed font-medium">
-            Institutional leadership can operate with complete confidence. Kiddo Shadow architecture prioritizes student protection through multi-layered security controls and comprehensive institutional oversight.
-          </p>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-5xl md:text-8xl font-black text-foreground mb-8 tracking-tighter leading-[0.9] max-w-5xl"
+          >
+            Enterprise-Grade Safety, <br /> 
+            <span className="text-gradient-neon filter saturate-[1.2]">Fully Aligned with School Standards</span>
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-foreground/40 max-w-4xl mx-auto text-xl md:text-2xl leading-relaxed font-medium"
+          >
+            Institutional leadership can operate with complete confidence. Kiddo Shadow architecture prioritizes student protection through multi-layered security controls and institutional oversight.
+          </motion.p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-20">
-          {features.map((feature, index) => (
+        {/* Ultra-Sleek Minimalist Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-32">
+          {safetyCards.map((card, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group"
+              transition={{ delay: index * 0.05 }}
+              className="group relative p-[1px] rounded-[2rem] overflow-hidden transition-all duration-500 hover:scale-[1.02]"
             >
-              <div className="h-full flex items-center gap-5 bg-card/40 backdrop-blur-xl border border-primary/5 rounded-[1.5rem] p-6 hover:bg-card hover:border-primary/30 transition-all duration-500 hover:shadow-xl relative overflow-hidden">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/5 to-primary/20 flex items-center justify-center text-primary shrink-0 group-hover:scale-105 transition-all duration-500 border border-primary/10 shadow-md">
-                  {React.cloneElement(feature.icon, { size: 20 })}
+              {/* Neon Gradient Border (Hover Active) */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary via-secondary to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              
+              <div className="relative h-full bg-background/80 backdrop-blur-3xl rounded-[2rem] p-10 flex gap-6 border border-white/5 group-hover:border-transparent transition-all">
+                <div className={`w-14 h-14 rounded-2xl ${card.bg} flex items-center justify-center border border-white/5 shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 ${card.color}`}>
+                  {card.icon}
                 </div>
-                <h3 className="text-base md:text-lg font-bold text-foreground tracking-tight leading-snug group-hover:text-primary transition-colors">
-                  {feature.title}
-                </h3>
                 
-                {/* Accent glow */}
-                <div className="absolute -bottom-10 -right-10 w-24 h-24 bg-primary/5 blur-[40px] rounded-full group-hover:bg-primary/10 transition-all" />
+                <div className="space-y-3">
+                  <h3 className="text-xl font-black text-foreground tracking-tight group-hover:text-primary transition-colors leading-tight">
+                    {card.title}
+                  </h3>
+                  <p className="text-foreground/30 text-sm leading-relaxed font-medium group-hover:text-foreground/50 transition-colors">
+                    {card.desc}
+                  </p>
+                </div>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Principal-Approved Premium Banner - Compact Version */}
+        {/* Principal Certification Bottom Card */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="relative max-w-4xl mx-auto"
+          className="glass-card rounded-[3.5rem] p-12 md:p-20 border-white/5 bg-white/[0.02] relative overflow-hidden group"
         >
-          <div className="bg-card/40 backdrop-blur-2xl border border-white/10 rounded-[2rem] p-1 overflow-hidden shadow-xl relative">
-            <div className="calm-gradient rounded-[1.9rem] p-6 md:p-10 relative overflow-hidden">
-              {/* Background Glass Pattern */}
-              <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.05] mix-blend-overlay" />
-              
-              <div className="relative z-10 flex flex-col sm:flex-row items-center gap-8 text-center sm:text-left">
-                <div className="relative shrink-0">
-                   <div className="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/40 shadow-2xl relative z-10">
-                     <CheckCircle2 size={32} className="text-white" />
-                   </div>
-                   <div className="absolute inset-0 bg-white/20 blur-xl rounded-full scale-125 animate-pulse" />
-                </div>
-                
-                <div className="flex-1">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white text-[9px] font-black uppercase tracking-[0.3em] mb-4">
-                    Institutional Standard
-                  </div>
-                  <h4 className="text-xl md:text-3xl font-black text-white mb-3 tracking-tight leading-[1.1]">Principal-Approved Platform</h4>
-                  <p className="text-white/80 text-sm md:text-base leading-relaxed font-medium max-w-xl">
-                    Every feature is designed with school management in mind. Full control over what students can access, complete visibility into all activities, and no external social media-style features.
-                  </p>
-                </div>
-              </div>
+          <div className="flex flex-col md:flex-row items-center gap-12 relative z-10">
+            <div className="w-24 h-24 rounded-3xl bg-primary/20 flex items-center justify-center text-primary shrink-0 shadow-2xl border border-primary/20 group-hover:scale-110 group-hover:rotate-6 transition-all duration-700">
+              <CheckCircle2 size={48} />
+            </div>
+            <div>
+              <h4 className="text-3xl md:text-4xl font-black text-foreground mb-6 tracking-tight">Principal-Approved Platform Architecture</h4>
+              <p className="text-foreground/40 text-xl leading-relaxed font-medium max-w-5xl">
+                Every feature is designed with school management in mind. Full control over what students can access, complete visibility into all activities, and no external social media-style features.
+              </p>
             </div>
           </div>
+          
+          {/* Subtle Glow */}
+          <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-primary/10 blur-[120px] rounded-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
         </motion.div>
       </div>
     </section>
   );
 };
 
+
 export default Safety;
+

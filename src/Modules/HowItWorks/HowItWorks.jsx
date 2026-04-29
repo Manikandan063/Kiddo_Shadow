@@ -6,12 +6,19 @@ import {
   ShieldCheck, 
   LineChart,
   Zap,
-  CheckCircle2
+  CheckCircle2,
+  ArrowRight
 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const HowItWorks = () => {
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
+  const containerRef = React.useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start center", "end center"]
+  });
+
+  const scaleY = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
     restDelta: 0.001
@@ -20,128 +27,139 @@ const HowItWorks = () => {
   const steps = [
     {
       id: "01",
-      title: "School Onboarding",
-      desc: "Instant digital mapping of your institution's infrastructure and student hierarchy.",
-      icon: <Building2 />,
-      color: "from-blue-500/20 to-blue-600/20",
-      accent: "blue"
+      title: "Institution Setup",
+      desc: "Your school admin provisioned with Kiddo Shadow. We configure the platform for your curriculum requirements (CBSE, ICSE, State Board) and institutional structure.",
+      pills: ["Supports CBSE, ICSE & State Curriculums", "Custom Institution branding", "Admin access configuration"]
     },
     {
       id: "02",
-      title: "Teacher Enablement",
-      desc: "AI assistant training for staff to reduce administrative workload by up to 40%.",
-      icon: <Users />,
-      color: "from-purple-500/20 to-purple-600/20",
-      accent: "purple"
+      title: "Educator Enablement",
+      desc: "Teachers seamlessly upload curriculum and gain full control through an intuitive, guided platform experience. Comprehensive training ensures optimal adoption.",
+      pills: ["Curriculum management", "Dashboard mastery", "Moderation framework setup"]
     },
     {
       id: "03",
-      title: "Secure Deployment",
-      desc: "Activation of curriculum-aligned AI environment for students with full moderation.",
-      icon: <ShieldCheck />,
-      color: "from-orange-500/20 to-orange-600/20",
-      accent: "orange"
+      title: "Secure Student Access",
+      desc: "Students receive secure, controlled access credentials. Platform enforces curriculum-aligned learning, secure communication, and age-appropriate engagement.",
+      pills: ["Secure authentication", "Moderated communication only", "Curriculum-restricted AI"]
     },
     {
       id: "04",
-      title: "Operational Insight",
-      desc: "Real-time analytics and performance reporting for institution leadership.",
-      icon: <LineChart />,
-      color: "from-emerald-500/20 to-emerald-600/20",
-      accent: "emerald"
+      title: "Intelligence & Insights",
+      desc: "Leadership and educators monitor institutional performance through premium analytics dashboards. Real-time visibility into attendance, learning outcomes, and engagement metrics.",
+      pills: ["Real-time analytics", "Performance dashboards", "Learning insights"]
     },
   ];
 
   return (
-    <section id="how-it-works" className="py-24 bg-background relative overflow-hidden">
+    <section id="how-it-works" ref={containerRef} className="py-32 relative overflow-hidden bg-background">
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
-        <div className="flex flex-col items-center text-center mb-16">
+        
+        {/* Header Section */}
+        <div className="text-center mb-40">
           <motion.div 
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[9px] font-black mb-4 uppercase tracking-[0.3em]"
+            className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-black mb-10 uppercase tracking-[0.4em] backdrop-blur-3xl"
           >
-            <Zap size={12} className="fill-primary" />
-            Strategic Implementation
+            SEAMLESS ONBOARDING
           </motion.div>
-          <h2 className="text-3xl md:text-5xl font-black text-foreground mb-6 tracking-tight leading-[1.1]">
-            Launch Your Institution in Four Steps
-          </h2>
-          <p className="text-foreground/50 max-w-2xl mx-auto text-sm md:text-base font-medium leading-relaxed">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-5xl md:text-8xl font-black text-foreground mb-12 tracking-tighter leading-[0.9]"
+          >
+            Launch Your Institution <br /> 
+            <span className="text-gradient-neon filter saturate-[1.2]">in Four Steps</span>
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-foreground/40 max-w-3xl mx-auto text-xl md:text-2xl leading-relaxed font-medium"
+          >
             From setup to insight. Kiddo Shadow provides a streamlined, fully-managed implementation experience designed for modern schools.
-          </p>
+          </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
-          {/* Connecting Path (Desktop) */}
-          <div className="hidden lg:block absolute top-1/2 left-0 w-full h-[1.5px] bg-primary/5 -translate-y-1/2 z-0">
-             <motion.div 
-               style={{ scaleX: scrollYProgress }}
-               className="h-full bg-primary origin-left shadow-[0_0_10px_var(--primary)]"
-             />
+        {/* Dynamic Alternating Timeline */}
+        <div className="relative">
+          {/* Animated Central Path */}
+          <div className="absolute left-1/2 top-0 bottom-0 w-[2px] bg-white/5 hidden lg:block -translate-x-1/2">
+            <motion.div 
+              style={{ scaleY, originY: 0 }}
+              className="absolute inset-0 bg-gradient-to-b from-primary via-secondary to-primary shadow-[0_0_15px_hsla(var(--primary)/0.5)]"
+            />
           </div>
 
-          {/* Steps */}
-          {steps.map((step, index) => (
-            <motion.div
-              key={step.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="relative z-10"
-            >
-              <div className="bg-card/40 backdrop-blur-xl border border-primary/5 rounded-[2rem] p-8 h-full flex flex-col hover:bg-card hover:border-primary/20 transition-all duration-500 group">
-                <div className="flex justify-between items-start mb-6">
-                  <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${step.color} border border-white/5 flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-500 shadow-xl`}>
-                    {React.cloneElement(step.icon, { size: 28 })}
+          <div className="space-y-32 lg:space-y-0">
+            {steps.map((step, index) => (
+              <motion.div
+                key={step.id}
+                className={`relative flex flex-col lg:flex-row items-center gap-12 lg:gap-24 ${index % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}
+              >
+                {/* Content Card */}
+                <motion.div
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  className="flex-1 w-full"
+                >
+                  <div className="glass-card p-12 border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-500 rounded-[3rem] relative group">
+                    <div className="absolute -top-6 -left-6 lg:group-hover:scale-110 transition-transform duration-500 hidden lg:block">
+                      <div className="w-20 h-20 rounded-3xl bg-background border border-white/10 flex items-center justify-center text-primary font-black text-2xl shadow-2xl backdrop-blur-2xl rotate-12 group-hover:rotate-0 transition-all">
+                        {step.id}
+                      </div>
+                    </div>
+                    
+                    <h3 className="text-3xl font-black text-foreground mb-6 tracking-tight group-hover:text-primary transition-colors">
+                      {step.title}
+                    </h3>
+                    <p className="text-foreground/40 text-lg leading-relaxed font-medium mb-10">
+                      {step.desc}
+                    </p>
+                    
+                    <div className="flex flex-wrap gap-3">
+                      {step.pills.map((pill, i) => (
+                        <div key={i} className="flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-white/[0.03] border border-white/10 text-[11px] font-bold text-foreground/40 hover:text-primary hover:bg-primary/5 transition-all cursor-default">
+                          <CheckCircle2 size={12} className="text-primary" />
+                          {pill}
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                  <span className="text-3xl font-black text-white/5 group-hover:text-primary/10 transition-colors">
+                </motion.div>
+
+                {/* Central Step Marker (Desktop Only) */}
+                <div className="hidden lg:flex shrink-0 w-20 h-20 rounded-full bg-background border-2 border-white/5 items-center justify-center relative z-20 shadow-2xl">
+                   <div className="w-4 h-4 rounded-full bg-primary shadow-[0_0_20px_hsla(var(--primary)/0.6)] animate-pulse" />
+                </div>
+
+                {/* Spacer for alternating layout */}
+                <div className="flex-1 hidden lg:block" />
+
+                {/* Mobile Step Indicator */}
+                <div className="lg:hidden absolute -top-8 left-0 flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-primary flex items-center justify-center text-white font-black text-sm shadow-2xl">
                     {step.id}
-                  </span>
+                  </div>
                 </div>
-                
-                <h3 className="text-xl font-bold text-white mb-3 tracking-tight">
-                  {step.title}
-                </h3>
-                <p className="text-sm text-white/40 leading-relaxed font-medium">
-                  {step.desc}
-                </p>
-
-                {/* Status Dot */}
-                <div className="mt-8 flex items-center gap-2">
-                   <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                   <div className="w-12 h-1 rounded-full bg-white/5 overflow-hidden">
-                      <motion.div 
-                        initial={{ x: "-100%" }}
-                        whileInView={{ x: "0%" }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 0.5 + index * 0.1 }}
-                        className="w-full h-full bg-primary"
-                      />
-                   </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Completion Indicator */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          className="mt-20 flex flex-col items-center"
-        >
-          <div className="p-4 rounded-full bg-primary/5 border border-primary/10">
-            <CheckCircle2 size={32} className="text-primary animate-pulse" />
+              </motion.div>
+            ))}
           </div>
-          <p className="mt-4 text-[10px] font-black uppercase tracking-[0.4em] text-white/20">Operational Readiness Achieved</p>
-        </motion.div>
+        </div>
       </div>
+
+      {/* Background Orbs */}
+      <div className="absolute top-1/4 left-0 w-[600px] h-[600px] bg-primary/5 blur-[150px] rounded-full pointer-events-none opacity-30" />
+      <div className="absolute bottom-1/4 right-0 w-[500px] h-[500px] bg-secondary/5 blur-[150px] rounded-full pointer-events-none opacity-30" />
     </section>
   );
 };
 
+
 export default HowItWorks;
+

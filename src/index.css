@@ -2,124 +2,106 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  html {
-  scroll-behavior: smooth;
-  @apply antialiased;
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  @apply bg-background;
-}
-
-  ::-webkit-scrollbar-thumb {
-    @apply bg-primary/20 rounded-full border-4 border-background hover:bg-primary/40 transition-colors;
-  }
-}
-
 :root {
+  /* Light Mode Palette */
   --background: 0 0% 100%;
   --foreground: 240 10% 3.9%;
-
+  
+  --primary: 25 95% 61%; /* Sunset Orange #FB923C */
+  --secondary: 173 80% 50%; /* Aqua Teal #2DD4BF */
+  --accent: 173 80% 50%;
+  --destructive: 0 84.2% 60.2%; /* Soft Red #EF4444 */
+  
   --card: 0 0% 100%;
   --card-foreground: 240 10% 3.9%;
-
-  --popover: 0 0% 100%;
-  --popover-foreground: 240 10% 3.9%;
-
-  --primary: 25 95% 61%; /* Orange #FB923C */
-  --primary-foreground: 0 0% 98%;
-
-  --secondary: 173 80% 50%; /* Teal #2DD4BF */
-  --secondary-foreground: 240 5.9% 10%;
-
-  --muted: 240 4.8% 95.9%;
-  --muted-foreground: 240 3.8% 46.1%;
-
-  --accent: 173 80% 50%;
-  --accent-foreground: 240 5.9% 10%;
-
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 0 0% 98%;
-
+  
   --border: 240 5.9% 90%;
-  --input: 240 5.9% 90%;
   --ring: 25 95% 61%;
-
-  --radius: 1.25rem;
 }
 
 .dark {
+  /* Dark Mode Palette */
   --background: 240 10% 3.9%; /* #09090B */
   --foreground: 0 0% 98%;
-
+  
   --card: 240 5.9% 10%; /* #18181B */
   --card-foreground: 0 0% 98%;
-
-  --popover: 240 10% 3.9%;
-  --popover-foreground: 0 0% 98%;
-
-  --primary: 25 95% 61%;
-  --primary-foreground: 240 5.9% 10%;
-
-  --secondary: 173 80% 50%;
-  --secondary-foreground: 0 0% 98%;
-
-  --muted: 240 3.7% 15.9%;
-  --muted-foreground: 240 5% 64.9%;
-
-  --accent: 240 3.7% 15.9%;
-  --accent-foreground: 0 0% 98%;
-
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 0 0% 98%;
-
+  
   --border: 240 3.7% 15.9%;
-  --input: 240 3.7% 15.9%;
   --ring: 25 95% 61%;
 }
 
 @layer base {
-  * {
-    @apply border-border;
+  html {
+    scroll-behavior: smooth;
+    @apply antialiased selection:bg-primary/30 selection:text-primary;
   }
+
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    scroll-behavior: smooth;
+    font-family: 'Inter', sans-serif;
   }
+
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Sora', sans-serif;
   }
+
+  /* Premium Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-background;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-foreground/10 rounded-full hover:bg-primary transition-colors;
+  }
 }
 
+/* Premium Styles & Effects */
 .calm-gradient {
-  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%);
+  @apply bg-gradient-to-r from-[#FB923C] to-[#2DD4BF];
 }
 
-.glass-morphism {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(47, 93, 90, 0.1);
+.text-gradient-neon {
+  @apply bg-clip-text text-transparent bg-gradient-to-br from-[#FB923C] via-[#FB923C] to-[#2DD4BF];
 }
 
-.sage-glow {
-  box-shadow: 0 20px 40px -15px hsla(var(--primary) / 0.15);
+.glass-navbar {
+  @apply bg-background/80 backdrop-blur-[20px] border-b border-white/5;
 }
 
-.hero-glow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 800px;
-  height: 800px;
-  background: radial-gradient(circle, hsla(var(--primary) / 0.05) 0%, transparent 70%);
-  z-index: -1;
-  pointer-events: none;
+.glass-card {
+  @apply backdrop-blur-[20px] border border-white/5 rounded-[2.5rem] transition-all duration-700 overflow-hidden;
+}
+
+.dark .glass-card {
+  @apply bg-white/[0.02] hover:bg-white/[0.04];
+}
+
+.glass-card:hover {
+  @apply border-primary/20 -translate-y-3;
+  box-shadow: 0 40px 80px -40px hsla(var(--primary) / 0.3);
+}
+
+.btn-pill {
+  @apply rounded-full px-8 py-3 font-bold transition-all duration-300 flex items-center justify-center;
+}
+
+.bg-grid {
+  background-image: radial-gradient(hsla(var(--foreground) / 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+.animate-pulse-slow {
+  animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.section-padding {
+  @apply py-32 md:py-40;
 }
