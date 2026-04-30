@@ -39,7 +39,7 @@ const Navbar = ({ onOpenDemo }) => {
 
   const navLinks = [
     { name: "Home", to: "home" },
-    { name: "Modules", to: "features" },
+    { name: "Modules", to: "school-needs" },
     { name: "Safety", to: "safety" },
     { name: "How It Works", to: "how-it-works" },
     { name: "Contact", to: "contact" },

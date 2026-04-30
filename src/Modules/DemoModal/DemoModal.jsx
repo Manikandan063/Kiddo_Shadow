@@ -39,7 +39,7 @@ const DemoModal = ({ isOpen, setIsOpen }) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent hideClose className="w-[95%] sm:max-w-[650px] bg-background/80 backdrop-blur-3xl text-foreground rounded-[2.5rem] overflow-hidden p-0 shadow-3xl outline-none border border-foreground/10 max-h-[95vh] overflow-y-auto">
+      <DialogContent hideClose className="w-[95%] sm:max-w-[650px] bg-background/95 md:bg-background/80 backdrop-blur-3xl text-foreground rounded-[2.5rem] overflow-hidden p-0 shadow-3xl outline-none border border-foreground/10 dark:border-white/10 max-h-[95vh] overflow-y-auto">
         {/* Animated Background Orbs */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-primary/10 blur-[100px] rounded-full animate-pulse-slow" />
@@ -47,7 +47,7 @@ const DemoModal = ({ isOpen, setIsOpen }) => {
         </div>
 
         <div className="flex flex-col relative z-10 p-8 sm:p-14">
-          <DialogClose className="absolute right-8 top-8 z-50 p-2 rounded-2xl bg-foreground/5 hover:bg-foreground/10 border border-foreground/10 text-foreground/40 hover:text-foreground transition-all duration-300">
+          <DialogClose className="absolute right-8 top-8 z-50 p-2 rounded-2xl bg-foreground/5 hover:bg-foreground/10 border border-foreground/10 text-foreground/40 dark:text-foreground/20 hover:text-foreground transition-all duration-300">
             <X size={20} />
           </DialogClose>
 
@@ -74,7 +74,7 @@ const DemoModal = ({ isOpen, setIsOpen }) => {
             <DialogTitle className="text-3xl sm:text-4xl font-black text-foreground tracking-tight mb-3">
               Book a <span className="text-gradient-neon">Free Demo</span>
             </DialogTitle>
-            <DialogDescription className="text-foreground/40 text-base md:text-lg font-medium leading-relaxed max-w-md mx-auto">
+            <DialogDescription className="text-foreground/60 dark:text-foreground/40 text-base md:text-lg font-medium leading-relaxed max-w-md mx-auto">
               Fill in the details below to schedule a personalized demo for your school.
             </DialogDescription>
           </DialogHeader>
@@ -83,14 +83,14 @@ const DemoModal = ({ isOpen, setIsOpen }) => {
             <div className="grid grid-cols-1 gap-6">
               {/* School Name */}
               <div className="space-y-3 group">
-                <Label htmlFor="schoolName" className="text-[10px] font-black uppercase tracking-[0.2em] text-foreground/20 group-focus-within:text-primary transition-colors flex items-center gap-2 ml-1">
+                <Label htmlFor="schoolName" className="text-[10px] font-black uppercase tracking-[0.2em] text-foreground/40 dark:text-foreground/20 group-focus-within:text-primary transition-colors flex items-center gap-2 ml-1">
                   <Building2 size={12} />
                   School Name
                 </Label>
                 <Input
                   id="schoolName"
                   placeholder="Enter school name"
-                  className="bg-foreground/[0.03] border-foreground/10 text-foreground focus:border-primary/50 focus:ring-8 focus:ring-primary/5 h-15 rounded-2xl placeholder:text-foreground/10 transition-all text-sm font-bold shadow-inner"
+                  className="bg-foreground/[0.05] dark:bg-foreground/[0.03] border-foreground/10 text-foreground focus:border-primary/50 focus:ring-8 focus:ring-primary/5 h-15 rounded-2xl placeholder:text-foreground/40 dark:placeholder:text-foreground/10 transition-all text-sm font-bold shadow-inner"
                   required
                   value={formData.schoolName}
                   onChange={handleChange}
@@ -106,7 +106,7 @@ const DemoModal = ({ isOpen, setIsOpen }) => {
                 <Input
                   id="contactPerson"
                   placeholder="Enter contact person name"
-                  className="bg-foreground/[0.03] border-foreground/10 text-foreground focus:border-primary/50 focus:ring-8 focus:ring-primary/5 h-15 rounded-2xl placeholder:text-foreground/10 transition-all text-sm font-bold shadow-inner"
+                  className="bg-foreground/[0.05] dark:bg-foreground/[0.03] border-foreground/10 text-foreground focus:border-primary/50 focus:ring-8 focus:ring-primary/5 h-15 rounded-2xl placeholder:text-foreground/40 dark:placeholder:text-foreground/10 transition-all text-sm font-bold shadow-inner"
                   required
                   value={formData.contactPerson}
                   onChange={handleChange}
@@ -123,7 +123,7 @@ const DemoModal = ({ isOpen, setIsOpen }) => {
                   <Input
                     id="mobileNumber"
                     placeholder="Enter mobile number"
-                    className="bg-foreground/[0.03] border-foreground/10 text-foreground focus:border-primary/50 focus:ring-8 focus:ring-primary/5 h-15 rounded-2xl placeholder:text-foreground/10 transition-all text-sm font-bold shadow-inner"
+                    className="bg-foreground/[0.05] dark:bg-foreground/[0.03] border-foreground/10 text-foreground focus:border-primary/50 focus:ring-8 focus:ring-primary/5 h-15 rounded-2xl placeholder:text-foreground/40 dark:placeholder:text-foreground/10 transition-all text-sm font-bold shadow-inner"
                     required
                     type="tel"
                     value={formData.mobileNumber}
@@ -138,7 +138,7 @@ const DemoModal = ({ isOpen, setIsOpen }) => {
                   <Input
                     id="emailId"
                     placeholder="Enter email address"
-                    className="bg-foreground/[0.03] border-foreground/10 text-foreground focus:border-primary/50 focus:ring-8 focus:ring-primary/5 h-15 rounded-2xl placeholder:text-foreground/10 transition-all text-sm font-bold shadow-inner"
+                    className="bg-foreground/[0.05] dark:bg-foreground/[0.03] border-foreground/10 text-foreground focus:border-primary/50 focus:ring-8 focus:ring-primary/5 h-15 rounded-2xl placeholder:text-foreground/40 dark:placeholder:text-foreground/10 transition-all text-sm font-bold shadow-inner"
                     required
                     type="email"
                     value={formData.emailId}
@@ -157,7 +157,7 @@ const DemoModal = ({ isOpen, setIsOpen }) => {
                   <Input
                     id="location"
                     placeholder="City or District"
-                    className="bg-foreground/[0.03] border-foreground/10 text-foreground focus:border-primary/50 focus:ring-8 focus:ring-primary/5 h-15 rounded-2xl placeholder:text-foreground/10 transition-all text-sm font-bold shadow-inner"
+                    className="bg-foreground/[0.05] dark:bg-foreground/[0.03] border-foreground/10 text-foreground focus:border-primary/50 focus:ring-8 focus:ring-primary/5 h-15 rounded-2xl placeholder:text-foreground/40 dark:placeholder:text-foreground/10 transition-all text-sm font-bold shadow-inner"
                     required
                     value={formData.location}
                     onChange={handleChange}
@@ -171,7 +171,7 @@ const DemoModal = ({ isOpen, setIsOpen }) => {
                   <Input
                     id="students"
                     placeholder="e.g. 500"
-                    className="bg-foreground/[0.03] border-foreground/10 text-foreground focus:border-primary/50 focus:ring-8 focus:ring-primary/5 h-15 rounded-2xl placeholder:text-foreground/10 transition-all text-sm font-bold shadow-inner"
+                    className="bg-foreground/[0.05] dark:bg-foreground/[0.03] border-foreground/10 text-foreground focus:border-primary/50 focus:ring-8 focus:ring-primary/5 h-15 rounded-2xl placeholder:text-foreground/40 dark:placeholder:text-foreground/10 transition-all text-sm font-bold shadow-inner"
                     required
                     value={formData.students}
                     onChange={handleChange}
@@ -190,7 +190,7 @@ const DemoModal = ({ isOpen, setIsOpen }) => {
                   <ArrowRight className="w-4 h-4" />
                 </div>
               </Button>
-              <p className="text-center mt-6 text-foreground/20 text-[9px] font-black uppercase tracking-[0.4em]">
+              <p className="text-center mt-6 text-foreground/40 dark:text-foreground/20 text-[9px] font-black uppercase tracking-[0.4em]">
                 Secure Transmission • Professional Deployment
               </p>
             </div>

@@ -12,13 +12,13 @@ import { X, FileCode, Shield, Server, Users, Trash2, Scale, AlertCircle } from "
 const DPAModal = ({ isOpen, setIsOpen }) => {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent hideClose className="w-[95%] sm:max-w-[1000px] bg-background text-foreground rounded-[2rem] md:rounded-[3.5rem] overflow-hidden p-0 shadow-3xl outline-none border border-foreground/10 max-h-[90vh] flex flex-col">
+      <DialogContent hideClose className="w-[95%] sm:max-w-[1000px] bg-background text-foreground rounded-[2rem] md:rounded-[3.5rem] overflow-hidden p-0 shadow-3xl outline-none border border-foreground/10 dark:border-white/10 max-h-[90vh] flex flex-col">
         
         {/* Header Overlay */}
         <div className="bg-foreground/[0.02] border-b border-foreground/5 p-8 md:p-12 relative shrink-0">
           <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 blur-[80px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
           
-          <DialogClose className="absolute right-8 top-8 z-50 p-3 rounded-2xl bg-foreground/5 hover:bg-foreground/10 border border-foreground/10 text-foreground/20 hover:text-foreground transition-all shadow-xl">
+          <DialogClose className="absolute right-8 top-8 z-50 p-3 rounded-2xl bg-foreground/5 hover:bg-foreground/10 border border-foreground/10 text-foreground/40 dark:text-foreground/20 hover:text-foreground transition-all shadow-xl">
             <X size={20} />
           </DialogClose>
 
@@ -32,7 +32,7 @@ const DPAModal = ({ isOpen, setIsOpen }) => {
               <DialogTitle className="text-3xl md:text-5xl font-black text-foreground tracking-tight mb-4">
                 Data Processing <span className="text-primary italic">Addendum (DPA)</span>
               </DialogTitle>
-              <DialogDescription className="text-foreground/40 text-sm md:text-lg font-medium">
+              <DialogDescription className="text-foreground/60 dark:text-foreground/40 text-sm md:text-lg font-medium">
                 Last Updated: Feb 9, 2026 • Governing AI & student data handling standards.
               </DialogDescription>
             </DialogHeader>
@@ -43,7 +43,7 @@ const DPAModal = ({ isOpen, setIsOpen }) => {
         <div className="flex-1 overflow-y-auto p-8 md:p-16 space-y-12 custom-scrollbar">
           
           {/* Introduction */}
-          <div className="prose prose-invert max-w-none">
+          <div className="prose dark:prose-invert max-w-none">
             <p className="text-foreground/60 leading-relaxed text-lg italic">
               This Data Processing Addendum (“DPA”) forms an integral part of the service agreement between Xtown Technologies Pvt. Ltd. (“Processor”) and the subscribing School/Institution (“Controller”).
             </p>
@@ -66,7 +66,7 @@ const DPAModal = ({ isOpen, setIsOpen }) => {
                 ].map((item, i) => (
                   <div key={i} className="p-6 rounded-3xl bg-foreground/[0.02] border border-foreground/5">
                     <span className="text-primary font-bold block mb-2">{item.label}</span>
-                    <span className="text-foreground/40 text-sm leading-relaxed">{item.desc}</span>
+                    <span className="text-foreground/60 dark:text-foreground/40 text-sm leading-relaxed">{item.desc}</span>
                   </div>
                 ))}
               </div>
@@ -119,7 +119,7 @@ const DPAModal = ({ isOpen, setIsOpen }) => {
 
             {/* Footer Contact */}
             <div className="pt-12 border-t border-foreground/5 text-center">
-              <p className="text-foreground/30 text-xs font-bold uppercase tracking-[0.3em] mb-4">Legal & Compliance</p>
+              <p className="text-foreground/50 dark:text-foreground/30 text-xs font-bold uppercase tracking-[0.3em] mb-4">Legal & Compliance</p>
               <div className="flex flex-col md:flex-row items-center justify-center gap-8">
                 <a href="mailto:legal@kiddoshadow.in" className="text-primary font-bold hover:underline">legal@kiddoshadow.in</a>
               </div>

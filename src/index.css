@@ -72,14 +72,12 @@
 }
 
 .glass-card {
-  @apply backdrop-blur-[20px] border border-white/5 rounded-[2.5rem] transition-all duration-700 overflow-hidden;
-}
-
-.dark .glass-card {
-  @apply bg-white/[0.02] hover:bg-white/[0.04];
+  @apply backdrop-blur-[20px] border border-foreground/10 dark:border-white/5 rounded-[2.5rem] transition-all duration-700 overflow-hidden;
+  @apply bg-foreground/[0.02] dark:bg-white/[0.02];
 }
 
 .glass-card:hover {
+  @apply bg-foreground/[0.04] dark:bg-white/[0.04];
   @apply border-primary/20 -translate-y-3;
   box-shadow: 0 40px 80px -40px hsla(var(--primary) / 0.3);
 }
