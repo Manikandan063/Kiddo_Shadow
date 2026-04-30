@@ -1,15 +1,8 @@
 import React from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
 import { 
-  Building2, 
-  Users, 
-  ShieldCheck, 
-  LineChart,
-  Zap,
-  CheckCircle2,
-  ArrowRight
+  CheckCircle2
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 const HowItWorks = () => {
   const containerRef = React.useRef(null);

@@ -57,7 +57,7 @@ const Modules = () => {
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-24 gap-12 text-center lg:text-left">
           <div className="max-w-2xl mx-auto lg:mx-0">
-            <h2 className="text-4xl md:text-7xl font-black text-white mb-6 tracking-tight leading-[1]">The Intelligence <br /> <span className="text-gradient-primary">Ecosystem</span></h2>
+            <h2 className="text-4xl md:text-7xl font-black text-foreground mb-6 tracking-tight leading-[1]">The Intelligence <br /> <span className="text-gradient-neon">Ecosystem</span></h2>
           </div>
         </div>
 
@@ -76,19 +76,19 @@ const Modules = () => {
                 {/* Floating Glow behind card */}
                 <div className={`absolute -inset-4 bg-gradient-to-br ${module.color === 'primary' ? 'from-primary/10 to-transparent' : 'from-secondary/10 to-transparent'} blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10`} />
                 
-                <div className="h-full bg-[#08080A] border border-white/[0.05] rounded-[2rem] p-12 transition-all duration-500 group-hover:bg-black group-hover:-translate-y-4 shadow-3xl shadow-black/50">
-                  <div className={`w-16 h-16 rounded-2xl bg-white/[0.02] border border-white/5 flex items-center justify-center ${module.color === 'primary' ? 'text-primary' : 'text-secondary'} mb-10 group-hover:scale-125 group-hover:bg-primary/10 transition-all duration-500`}>
+                <div className="h-full bg-card border border-border rounded-[2rem] p-12 transition-all duration-500 group-hover:-translate-y-4 shadow-3xl shadow-black/5 dark:shadow-black/50">
+                  <div className={`w-16 h-16 rounded-2xl bg-foreground/[0.02] border border-border flex items-center justify-center ${module.color === 'primary' ? 'text-primary' : 'text-secondary'} mb-10 group-hover:scale-125 group-hover:bg-primary/10 transition-all duration-500`}>
                     {module.icon}
                   </div>
                   
-                  <h3 className="text-2xl font-black text-white mb-4 tracking-tight group-hover:text-primary transition-colors">{module.title}</h3>
-                  <p className="text-white/30 text-lg leading-relaxed font-medium mb-12">
+                  <h3 className="text-2xl font-black text-foreground mb-4 tracking-tight group-hover:text-primary transition-colors">{module.title}</h3>
+                  <p className="text-foreground/40 text-lg leading-relaxed font-medium mb-12">
                     {module.description}
                   </p>
 
                   <div className="flex items-center gap-4">
                     <div className={`h-[2px] ${module.color === 'primary' ? 'bg-primary' : 'bg-secondary'} w-0 group-hover:w-12 transition-all duration-700`} />
-                    <span className="text-[10px] font-black text-white/10 uppercase tracking-widest group-hover:text-white transition-colors">Module Ready</span>
+                    <span className="text-[10px] font-black text-foreground/10 uppercase tracking-widest group-hover:text-foreground/60 transition-colors">Module Ready</span>
                   </div>
                 </div>
               </div>

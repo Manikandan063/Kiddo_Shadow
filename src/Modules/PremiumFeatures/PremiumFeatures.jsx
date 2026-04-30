@@ -75,12 +75,12 @@ const PremiumFeatures = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="glass-card rounded-[3rem] p-12 border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-500 group relative overflow-hidden"
+              className="glass-card rounded-[3rem] p-12 border-border bg-foreground/[0.02] hover:bg-foreground/[0.04] transition-all duration-500 group relative overflow-hidden"
             >
               {/* Subtle background glow on hover */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 blur-[60px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
               
-              <div className={`w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center mb-10 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 border border-white/10 shadow-2xl ${feature.color}`}>
+              <div className={`w-14 h-14 rounded-2xl bg-foreground/5 flex items-center justify-center mb-10 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 border border-border shadow-2xl ${feature.color}`}>
                 {feature.icon}
               </div>
 

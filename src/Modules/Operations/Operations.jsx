@@ -66,7 +66,7 @@ const Operations = ({ onOpenDemo }) => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-5xl md:text-[5.5rem] font-black text-foreground mb-8 tracking-tighter leading-[0.95]"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-foreground mb-6 md:mb-8 tracking-tighter leading-[1.1] md:leading-[1]"
           >
             Built for Modern School <br /> 
             <span className="text-gradient-neon filter saturate-[1.2]">Operations</span>

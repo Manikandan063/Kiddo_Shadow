@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import {
   Dialog,
   DialogContent,
@@ -32,142 +33,112 @@ const DemoModal = ({ isOpen, setIsOpen }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form Submitted:", formData);
-    alert("Thank you! Your request has been received. Our team will contact you soon.");
+    alert("Thank you! Your enquiry has been received. Our team will contact you soon.");
     setIsOpen(false);
   };
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent hideClose className="sm:max-w-[900px] bg-background text-foreground rounded-[3.5rem] overflow-hidden p-0 shadow-3xl outline-none border border-foreground/10">
-        <div className="flex flex-col md:flex-row h-full min-h-[600px]">
-          {/* Left Panel: High Fidelity Brand Area */}
-          <div className="md:w-[360px] bg-foreground/[0.02] p-12 text-foreground relative overflow-hidden hidden md:flex flex-col justify-between border-r border-foreground/5">
-            {/* Dynamic Background Glows */}
-            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary/10 via-transparent to-transparent pointer-events-none" />
-            <div className="absolute bottom-0 right-0 w-64 h-64 bg-secondary/5 blur-[80px] rounded-full translate-y-1/2 translate-x-1/2 pointer-events-none" />
-            
-            <div className="relative z-10">
-              <div className="h-16 flex items-center mb-12">
-                <img 
-                  src={navLogo} 
-                  alt="Kiddo Shadow Logo" 
-                  className="h-full w-auto object-contain filter drop-shadow-[0_0_10px_hsla(var(--primary)/0.3)]" 
-                />
-              </div>
-              
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[9px] font-black uppercase tracking-[0.3em] mb-6">
-                <Zap size={10} fill="currentColor" />
-                Next-Gen Onboarding
-              </div>
-              
-              <h3 className="text-3xl font-black mb-8 leading-[1.1] tracking-tight text-gradient-neon">Start Your AI Journey</h3>
-              
-              <div className="space-y-8">
-                {[
-                  { icon: ShieldCheck, text: "Institutional Privacy Core", sub: "Data never leaves school server" },
-                  { icon: Zap, text: "Curriculum Synergy", sub: "CBSE & ICSE alignment" },
-                  { icon: Globe, text: "Nationwide Support", sub: "Serving 200+ Institutions" }
-                ].map((item, i) => (
-                  <div key={i} className="flex gap-4 group">
-                    <div className="w-10 h-10 rounded-xl bg-foreground/5 flex items-center justify-center border border-foreground/10 group-hover:bg-primary/10 group-hover:text-primary transition-all shrink-0 shadow-lg">
-                      <item.icon size={18} />
-                    </div>
-                    <div>
-                      <p className="text-sm font-bold text-foreground/80 group-hover:text-foreground transition-colors">{item.text}</p>
-                      <p className="text-[10px] text-foreground/30 font-medium">{item.sub}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+      <DialogContent hideClose className="w-[95%] sm:max-w-[650px] bg-background/80 backdrop-blur-3xl text-foreground rounded-[2.5rem] overflow-hidden p-0 shadow-3xl outline-none border border-foreground/10 max-h-[95vh] overflow-y-auto">
+        {/* Animated Background Orbs */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-primary/10 blur-[100px] rounded-full animate-pulse-slow" />
+          <div className="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] bg-secondary/5 blur-[80px] rounded-full" />
+        </div>
 
-            <div className="relative z-10">
-              <div className="p-6 rounded-3xl bg-foreground/[0.03] border border-foreground/5 backdrop-blur-xl">
-                <p className="text-[9px] font-black uppercase tracking-[0.3em] mb-2 text-foreground/20">Operational Readiness</p>
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-foreground/60">System Status</span>
-                  <span className="flex items-center gap-2 text-[10px] font-black text-primary">
-                    <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                    LIVE
-                  </span>
-                </div>
-              </div>
-            </div>
+        <div className="flex flex-col relative z-10 p-8 sm:p-14">
+          <DialogClose className="absolute right-8 top-8 z-50 p-2 rounded-2xl bg-foreground/5 hover:bg-foreground/10 border border-foreground/10 text-foreground/40 hover:text-foreground transition-all duration-300">
+            <X size={20} />
+          </DialogClose>
+
+          {/* Logo Section */}
+          <div className="flex justify-center mb-10">
+            <motion.div 
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="h-16 lg:h-20 flex items-center justify-center p-2 rounded-2xl bg-foreground/[0.02] border border-border/50 backdrop-blur-md shadow-xl"
+            >
+               <img 
+                 src={navLogo} 
+                 alt="Kiddo Shadow Logo" 
+                 className="h-full w-auto object-contain filter drop-shadow-[0_0_15px_hsla(var(--primary)/0.2)]" 
+               />
+            </motion.div>
           </div>
 
-          {/* Right Panel: Premium Form */}
-          <div className="flex-1 p-10 md:p-16 relative">
-            <DialogClose className="absolute right-8 top-8 z-50 p-3 rounded-2xl bg-foreground/5 hover:bg-foreground/10 border border-foreground/10 text-foreground/20 hover:text-foreground transition-all shadow-xl">
-              <X size={20} />
-            </DialogClose>
+          <DialogHeader className="mb-12 text-center">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-black uppercase tracking-[0.3em] mb-4 mx-auto">
+              <Sparkles size={12} className="fill-current" />
+              Institutional Demo
+            </div>
+            <DialogTitle className="text-3xl sm:text-4xl font-black text-foreground tracking-tight mb-3">
+              Book a <span className="text-gradient-neon">Free Demo</span>
+            </DialogTitle>
+            <DialogDescription className="text-foreground/40 text-base md:text-lg font-medium leading-relaxed max-w-md mx-auto">
+              Fill in the details below to schedule a personalized demo for your school.
+            </DialogDescription>
+          </DialogHeader>
 
-            <DialogHeader className="mb-12">
-              <DialogTitle className="text-3xl font-black text-foreground tracking-tight mb-3">
-                Request <span className="text-primary">Institutional</span> Demo
-              </DialogTitle>
-              <DialogDescription className="text-foreground/30 text-lg font-medium leading-relaxed">
-                Connect with our deployment specialists.
-              </DialogDescription>
-            </DialogHeader>
+          <form onSubmit={handleSubmit} className="space-y-8">
+            <div className="grid grid-cols-1 gap-6">
+              {/* School Name */}
+              <div className="space-y-3 group">
+                <Label htmlFor="schoolName" className="text-[10px] font-black uppercase tracking-[0.2em] text-foreground/20 group-focus-within:text-primary transition-colors flex items-center gap-2 ml-1">
+                  <Building2 size={12} />
+                  School Name
+                </Label>
+                <Input
+                  id="schoolName"
+                  placeholder="Enter school name"
+                  className="bg-foreground/[0.03] border-foreground/10 text-foreground focus:border-primary/50 focus:ring-8 focus:ring-primary/5 h-15 rounded-2xl placeholder:text-foreground/10 transition-all text-sm font-bold shadow-inner"
+                  required
+                  value={formData.schoolName}
+                  onChange={handleChange}
+                />
+              </div>
 
-            <form onSubmit={handleSubmit} className="space-y-8">
-              <div className="grid grid-cols-1 gap-8">
+              {/* Contact Person */}
+              <div className="space-y-3 group">
+                <Label htmlFor="contactPerson" className="text-[10px] font-black uppercase tracking-[0.2em] text-foreground/20 group-focus-within:text-primary transition-colors flex items-center gap-2 ml-1">
+                  <User size={12} />
+                  Contact Person
+                </Label>
+                <Input
+                  id="contactPerson"
+                  placeholder="Enter contact person name"
+                  className="bg-foreground/[0.03] border-foreground/10 text-foreground focus:border-primary/50 focus:ring-8 focus:ring-primary/5 h-15 rounded-2xl placeholder:text-foreground/10 transition-all text-sm font-bold shadow-inner"
+                  required
+                  value={formData.contactPerson}
+                  onChange={handleChange}
+                />
+              </div>
+
+              {/* Mobile & Email Row */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-3 group">
-                  <Label htmlFor="schoolName" className="text-foreground/20 text-[10px] uppercase tracking-[0.3em] font-black ml-1 flex items-center gap-2 group-focus-within:text-primary transition-colors">
-                    <Building2 size={12} />
-                    Institution Name
+                  <Label htmlFor="mobileNumber" className="text-[10px] font-black uppercase tracking-[0.2em] text-foreground/20 group-focus-within:text-primary transition-colors flex items-center gap-2 ml-1">
+                    <Phone size={12} />
+                    Mobile Number
                   </Label>
                   <Input
-                    id="schoolName"
-                    placeholder="Enter school name"
-                    className="bg-foreground/[0.03] border-foreground/10 text-foreground focus:border-primary/50 focus:ring-8 focus:ring-primary/5 h-14 rounded-2xl placeholder:text-foreground/10 transition-all text-sm font-bold shadow-inner"
+                    id="mobileNumber"
+                    placeholder="Enter mobile number"
+                    className="bg-foreground/[0.03] border-foreground/10 text-foreground focus:border-primary/50 focus:ring-8 focus:ring-primary/5 h-15 rounded-2xl placeholder:text-foreground/10 transition-all text-sm font-bold shadow-inner"
                     required
-                    value={formData.schoolName}
+                    type="tel"
+                    value={formData.mobileNumber}
                     onChange={handleChange}
                   />
                 </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="space-y-3 group">
-                    <Label htmlFor="contactPerson" className="text-foreground/20 text-[10px] uppercase tracking-[0.3em] font-black ml-1 flex items-center gap-2 group-focus-within:text-primary transition-colors">
-                      <User size={12} />
-                      Full Name
-                    </Label>
-                    <Input
-                      id="contactPerson"
-                      placeholder="Principal / Admin Name"
-                      className="bg-foreground/[0.03] border-foreground/10 text-foreground focus:border-primary/50 focus:ring-8 focus:ring-primary/5 h-14 rounded-2xl placeholder:text-foreground/10 transition-all text-sm font-bold shadow-inner"
-                      required
-                      value={formData.contactPerson}
-                      onChange={handleChange}
-                    />
-                  </div>
-                  <div className="space-y-3 group">
-                    <Label htmlFor="mobileNumber" className="text-foreground/20 text-[10px] uppercase tracking-[0.3em] font-black ml-1 flex items-center gap-2 group-focus-within:text-primary transition-colors">
-                      <Phone size={12} />
-                      Mobile Number
-                    </Label>
-                    <Input
-                      id="mobileNumber"
-                      placeholder="+91..."
-                      className="bg-foreground/[0.03] border-foreground/10 text-foreground focus:border-primary/50 focus:ring-8 focus:ring-primary/5 h-14 rounded-2xl placeholder:text-foreground/10 transition-all text-sm font-bold shadow-inner"
-                      required
-                      type="tel"
-                      value={formData.mobileNumber}
-                      onChange={handleChange}
-                    />
-                  </div>
-                </div>
-
                 <div className="space-y-3 group">
-                  <Label htmlFor="emailId" className="text-foreground/20 text-[10px] uppercase tracking-[0.3em] font-black ml-1 flex items-center gap-2 group-focus-within:text-primary transition-colors">
+                  <Label htmlFor="emailId" className="text-[10px] font-black uppercase tracking-[0.2em] text-foreground/20 group-focus-within:text-primary transition-colors flex items-center gap-2 ml-1">
                     <Mail size={12} />
-                    Institutional Email
+                    Email ID
                   </Label>
                   <Input
                     id="emailId"
-                    placeholder="admin@school.com"
-                    className="bg-foreground/[0.03] border-foreground/10 text-foreground focus:border-primary/50 focus:ring-8 focus:ring-primary/5 h-14 rounded-2xl placeholder:text-foreground/10 transition-all text-sm font-bold shadow-inner"
+                    placeholder="Enter email address"
+                    className="bg-foreground/[0.03] border-foreground/10 text-foreground focus:border-primary/50 focus:ring-8 focus:ring-primary/5 h-15 rounded-2xl placeholder:text-foreground/10 transition-all text-sm font-bold shadow-inner"
                     required
                     type="email"
                     value={formData.emailId}
@@ -176,19 +147,54 @@ const DemoModal = ({ isOpen, setIsOpen }) => {
                 </div>
               </div>
 
+              {/* Location & Students Row */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="space-y-3 group">
+                  <Label htmlFor="location" className="text-[10px] font-black uppercase tracking-[0.2em] text-foreground/20 group-focus-within:text-primary transition-colors flex items-center gap-2 ml-1">
+                    <Globe size={12} />
+                    Location / District
+                  </Label>
+                  <Input
+                    id="location"
+                    placeholder="City or District"
+                    className="bg-foreground/[0.03] border-foreground/10 text-foreground focus:border-primary/50 focus:ring-8 focus:ring-primary/5 h-15 rounded-2xl placeholder:text-foreground/10 transition-all text-sm font-bold shadow-inner"
+                    required
+                    value={formData.location}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="space-y-3 group">
+                  <Label htmlFor="students" className="text-[10px] font-black uppercase tracking-[0.2em] text-foreground/20 group-focus-within:text-primary transition-colors flex items-center gap-2 ml-1">
+                    <Zap size={12} />
+                    Approx. Students
+                  </Label>
+                  <Input
+                    id="students"
+                    placeholder="e.g. 500"
+                    className="bg-foreground/[0.03] border-foreground/10 text-foreground focus:border-primary/50 focus:ring-8 focus:ring-primary/5 h-15 rounded-2xl placeholder:text-foreground/10 transition-all text-sm font-bold shadow-inner"
+                    required
+                    value={formData.students}
+                    onChange={handleChange}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-6">
               <Button 
                 type="submit" 
-                className="w-full mt-10 calm-gradient hover:scale-[1.02] active:scale-[0.98] transition-all py-9 text-lg font-black rounded-3xl shadow-3xl shadow-primary/20 flex items-center justify-center gap-4 group text-white border border-foreground/10"
+                className="w-full h-18 bg-gradient-to-br from-primary to-orange-600 text-white font-black text-lg rounded-2xl hover:scale-[1.03] active:scale-[0.97] transition-all duration-500 shadow-2xl shadow-primary/30 border-none group flex items-center justify-center gap-4"
               >
-                Schedule Deployment Talk
-                <ArrowRight size={22} className="group-hover:translate-x-2 transition-transform" />
+                Submit Enquiry
+                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-colors">
+                  <ArrowRight className="w-4 h-4" />
+                </div>
               </Button>
-              
-              <p className="text-center text-foreground/20 text-[9px] font-black uppercase tracking-[0.3em]">
-                Secure Transmission • Privacy Guaranteed
+              <p className="text-center mt-6 text-foreground/20 text-[9px] font-black uppercase tracking-[0.4em]">
+                Secure Transmission • Professional Deployment
               </p>
-            </form>
-          </div>
+            </div>
+          </form>
         </div>
       </DialogContent>
     </Dialog>
